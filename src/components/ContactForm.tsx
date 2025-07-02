@@ -118,13 +118,12 @@ const ContactForm: React.FC = () => {
            
           </div>
 
-          <button 
+          <input 
             type="submit" 
             className="submit-button"
-            
-          >
+            value="Send Message" 
+          />
 
-          </button>
         </form>
       </div>
     </div>
