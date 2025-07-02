@@ -90,41 +90,16 @@ const ContactForm: React.FC = () => {
         </p>
         
         <form name="contact" data-netlify="true">
-          <div className="form-group">
-            <label htmlFor="name" className="form-label">
-              Name *
-            </label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              placeholder="Enter your full name"
-            />
-         
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="email" className="form-label">
-              Email Address *
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-             
-              placeholder="Enter your email address"
-            
-            />
-           
-          </div>
-
-          <input 
-            type="submit" 
-            className="submit-button"
-            value="Send Message" 
-          />
-
-        </form>
+  <p>
+    <label>Name <input type="text" name="name" /></label>
+  </p>
+  <p>
+    <label>Email <input type="email" name="email" /></label>
+  </p>
+  <p>
+    <button type="submit">Send</button>
+  </p>
+</form>
       </div>
     </div>
   );
