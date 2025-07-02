@@ -1,15 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './ContactForm.css';
 
-interface FormData {
-  name: string;
-  email: string;
-}
-
-interface FormErrors {
-  name?: string;
-  email?: string;
-}
 
 const ContactForm: React.FC = () => {
 //   const [formData, setFormData] = useState<FormData>({
