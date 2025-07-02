@@ -61,32 +61,32 @@ const ContactForm: React.FC = () => {
     }
   };
 
-  const handleSubmit = async (e: any) => {
-    e.preventDefault();
+//   const handleSubmit = async (e: any) => {
+//     e.preventDefault();
     
-    if (!validateForm()) {
-      return;
-    }
+//     if (!validateForm()) {
+//       return;
+//     }
 
-    setIsSubmitting(true);
+//     setIsSubmitting(true);
 
-    // Simulate API call
-    try {
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      console.log('Form submitted:', formData);
-      setIsSubmitted(true);
+//     // Simulate API call
+//     try {
+//       await new Promise(resolve => setTimeout(resolve, 1000));
+//       console.log('Form submitted:', formData);
+//       setIsSubmitted(true);
       
-      // Reset form after successful submission
-      setTimeout(() => {
-        setFormData({ name: '', email: '' });
-        setIsSubmitted(false);
-      }, 3000);
-    } catch (error) {
-      console.error('Error submitting form:', error);
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+//       // Reset form after successful submission
+//       setTimeout(() => {
+//         setFormData({ name: '', email: '' });
+//         setIsSubmitted(false);
+//       }, 3000);
+//     } catch (error) {
+//       console.error('Error submitting form:', error);
+//     } finally {
+//       setIsSubmitting(false);
+//     }
+//   };
 
   if (isSubmitted) {
     return (
