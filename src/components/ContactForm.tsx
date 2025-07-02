@@ -89,7 +89,7 @@ const ContactForm: React.FC = () => {
           We'd love to hear from you. Send us a message and we'll respond as soon as possible.
         </p>
         
-        <form noValidate data-netlify="true">
+        <form name="contact" data-netlify="true">
           <div className="form-group">
             <label htmlFor="name" className="form-label">
               Name *
