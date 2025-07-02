@@ -1,117 +1,68 @@
-import React from 'react';
-import './ContactForm.css';
+import { useState } from 'react';
 
+const ContactForm = () => {
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        message: '',
+    });
 
-const ContactForm: React.FC = () => {
-//   const [formData, setFormData] = useState<FormData>({
-//     name: '',
-//     email: ''
-//   });
+    const handleChange = (e : any) => {
+        const { name, value } = e.target;
+        setFormData((prevData) => ({
+            ...prevData,
+            [name]: value,
+        }));
+    };
 
-//   const [errors, setErrors] = useState<FormErrors>({});
-//   const [isSubmitted, setIsSubmitted] = useState(false);
-//   const [isSubmitting, setIsSubmitting] = useState(false);
+    const handleSubmit = (e : any) => {
+        e.preventDefault();
+        // Optional: you can send the data to an API or perform validation here
+        console.log(formData);
+    };
 
-//   const validateEmail = (email: string): boolean => {
-//     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-//     return emailRegex.test(email);
-//   };
+    return (
+        <form
+            name="contact"
+            method="POST"
+            action="/thank-you/"
+            data-netlify="true"
+            onSubmit={handleSubmit}
+        >
+            <input type="hidden" name="form-name" value="contact" />
+            
+            <label htmlFor="name">Name</label>
+            <input
+                type="text"
+                name="name"
+                id="name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+            />
 
-//   const validateForm = (): boolean => {
-//     const newErrors: FormErrors = {};
+            <label htmlFor="email">Email</label>
+            <input
+                type="email"
+                name="email"
+                id="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+            />
 
-//     if (!formData.name.trim()) {
-//       newErrors.name = 'Name is required';
-//     } else if (formData.name.trim().length < 2) {
-//       newErrors.name = 'Name must be at least 2 characters long';
-//     }
+            <label htmlFor="message">Message</label>
+            <textarea
+                name="message"
+                id="message"
+                value={formData.message}
+                onChange={handleChange}
+                required
+            ></textarea>
 
-//     if (!formData.email.trim()) {
-//       newErrors.email = 'Email is required';
-//     } else if (!validateEmail(formData.email)) {
-//       newErrors.email = 'Please enter a valid email address';
-//     }
-
-//     setErrors(newErrors);
-//     return Object.keys(newErrors).length === 0;
-//   };
-
-//   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-//     const { name, value } = e.target;
-//     setFormData(prev => ({
-//       ...prev,
-//       [name]: value
-//     }));
-
-//     // Clear error when user starts typing
-//     if (errors[name as keyof FormErrors]) {
-//       setErrors(prev => ({
-//         ...prev,
-//         [name]: undefined
-//       }));
-//     }
-//   };
-
-//   const handleSubmit = async (e: any) => {
-//     e.preventDefault();
-    
-//     if (!validateForm()) {
-//       return;
-//     }
-
-//     setIsSubmitting(true);
-
-//     // Simulate API call
-//     try {
-//       await new Promise(resolve => setTimeout(resolve, 1000));
-//       console.log('Form submitted:', formData);
-//       setIsSubmitted(true);
-      
-//       // Reset form after successful submission
-//       setTimeout(() => {
-//         setFormData({ name: '', email: '' });
-//         setIsSubmitted(false);
-//       }, 3000);
-//     } catch (error) {
-//       console.error('Error submitting form:', error);
-//     } finally {
-//       setIsSubmitting(false);
-//     }
-//   };
-
-
-
-  return (
-    <div className="contact-form-container">
-      <div className="contact-form">
-        <h2>Contact Us</h2>
-        <p className="form-description">
-          We'd love to hear from you. Send us a message and we'll respond as soon as possible.
-        </p>
-        
-        <form name="contact" method="POST" data-netlify="true">
-  <p>
-    <label>Your Name: <input type="text" name="name" /></label>
-  </p>
-  <p>
-    <label>Your Email: <input type="email" name="email" /></label>
-  </p>
-  <p>
-    <label>Your Role: <select name="role[]" multiple>
-      <option value="leader">Leader</option>
-      <option value="follower">Follower</option>
-    </select></label>
-  </p>
-  <p>
-    <label>Message: <textarea name="message"></textarea></label>
-  </p>
-  <p>
-    <button type="submit">Send</button>
-  </p>
-</form>
-      </div>
-    </div>
-  );
+            <button type="submit">Submit</button>
+        </form>
+    );
 };
 
 export default ContactForm;
